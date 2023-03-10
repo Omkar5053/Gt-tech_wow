@@ -57,6 +57,20 @@ public class ProjectDetailsService {
         projectDto.setEndDate(project.getEndDate());
         projectDto.setNoOfStudents(userService.getNoOfStudnetsByProjectId(project.getProjectId()));
         projectDto.setStudentDetails(userRepository.getUsersByProjectId(project.getProjectId()));
+        if(project.isProjectStatus())
+            projectDto.setProjectStatus("ACTIVE");
+        else
+            projectDto.setProjectStatus("INACTIVE");
         return projectDto;
+    }
+
+    public List<ProjectDto> getProjectStatus(Integer projectStatus) {
+        List<ProjectDetails> projectDetails = projectRepository.getProjectsByStatus(projectStatus);
+        List<ProjectDto> projectDtos = new ArrayList<>();
+        for(ProjectDetails project : projectDetails)
+        {
+            projectDtos.add(convertToProjectDto(project));
+        }
+        return projectDtos;
     }
 }

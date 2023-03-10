@@ -8,16 +8,19 @@ public class ProjectDto {
     private Integer noOfStudents;
     private Date startDate;
     private Date endDate;
+
+    private String projectStatus;
     private List<User> studentDetails;
 
     public ProjectDto() {
     }
 
-    public ProjectDto(String projectGuide, Integer noOfStudents, Date startDate, Date endDate, List<User> studentDetails) {
+    public ProjectDto(String projectGuide, Integer noOfStudents, Date startDate, Date endDate, String projectStatus, List<User> studentDetails) {
         this.projectGuide = projectGuide;
         this.noOfStudents = noOfStudents;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.projectStatus = projectStatus;
         this.studentDetails = studentDetails;
     }
 
@@ -59,5 +62,13 @@ public class ProjectDto {
 
     public void setStudentDetails(List<User> studentDetails) {
         this.studentDetails = studentDetails;
+    }
+
+    public String getProjectStatus() {
+        return projectStatus;
+    }
+
+    public void setProjectStatus(String projectStatus) {
+        this.projectStatus = projectStatus;
     }
 }

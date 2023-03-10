@@ -16,4 +16,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     public User getUserByUserName(String userName);
     @Query(value = "SELECT * FROM user u where u.project_id=:project_id", nativeQuery = true)
     public List<User> getUsersByProjectId(@Param(value = "project_id") String project_id);
+
 }

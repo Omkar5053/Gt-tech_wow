@@ -58,6 +58,7 @@ public class UserService {
         studentDetails.setFullName(user.get().getFullName());
         studentDetails.setSchool(user.get().getSchool());
         studentDetails.setProjectDetails(user.get().getProjectDetails());
+        studentDetails.setRegNo(user.get().getUserName());
         return studentDetails;
     }
 
@@ -66,4 +67,5 @@ public class UserService {
         List<User> users = userRepository.getUsersByProjectId(projectId);
         return users.size();
     }
+
 }

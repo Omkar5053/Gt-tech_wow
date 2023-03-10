@@ -15,12 +15,11 @@ public class SprintDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer sprintId;
     private String studentRegNo;
-    @JsonIgnore
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy hh:mm:ss")
     private Date startDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy hh:mm:ss")
     private Date endDate;
-    private String ProjectRemarks;
+    private String projectRemarks;
 
     @ManyToOne
     @JsonBackReference
@@ -35,7 +34,7 @@ public class SprintDetails {
         this.studentRegNo = studentRegNo;
         this.startDate = startDate;
         this.endDate = endDate;
-        ProjectRemarks = projectRemarks;
+        this.projectRemarks = projectRemarks;
         this.projectDetails = projectDetails;
     }
 
@@ -72,11 +71,11 @@ public class SprintDetails {
     }
 
     public String getProjectRemarks() {
-        return ProjectRemarks;
+        return projectRemarks;
     }
 
     public void setProjectRemarks(String projectRemarks) {
-        ProjectRemarks = projectRemarks;
+        this.projectRemarks = projectRemarks;
     }
 
     public ProjectDetails getProjectDetails() {
@@ -94,7 +93,7 @@ public class SprintDetails {
                 ", studentRegNo='" + studentRegNo + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", ProjectRemarks='" + ProjectRemarks + '\'' +
+                ", ProjectRemarks='" + projectRemarks + '\'' +
                 ", projectDetails=" + projectDetails +
                 '}';
     }

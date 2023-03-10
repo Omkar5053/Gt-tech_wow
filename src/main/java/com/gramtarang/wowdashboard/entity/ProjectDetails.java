@@ -13,13 +13,10 @@ public class ProjectDetails {
     @Column(unique = true)
     private String projectName;
     private String branch;
-
     private String campus;
     private String projectGuide;
     private String guideContact;
     private String guideEmail;
-    private String projectCoordinator;
-    private String coordinatorContact;
     private boolean projectStatus;
     private Date startDate;
     private Date endDate;
@@ -34,15 +31,13 @@ public class ProjectDetails {
     public ProjectDetails() {
     }
 
-    public ProjectDetails(String projectId, String projectName, String branch, String projectGuide, String guideContact, String guideEmail, String projectCoordinator, String coordinatorContact, boolean projectStatus, Date startDate,String campus, Date endDate, List<User> users, List<SprintDetails> sprintDetails) {
+    public ProjectDetails(String projectId, String projectName, String branch, String projectGuide, String guideContact, String guideEmail, boolean projectStatus, Date startDate,String campus, Date endDate, List<User> users, List<SprintDetails> sprintDetails) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.branch = branch;
         this.projectGuide = projectGuide;
         this.guideContact = guideContact;
         this.guideEmail = guideEmail;
-        this.projectCoordinator = projectCoordinator;
-        this.coordinatorContact = coordinatorContact;
         this.projectStatus = projectStatus;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -97,22 +92,6 @@ public class ProjectDetails {
 
     public void setGuideEmail(String guideEmail) {
         this.guideEmail = guideEmail;
-    }
-
-    public String getProjectCoordinator() {
-        return projectCoordinator;
-    }
-
-    public void setProjectCoordinator(String projectCoordinator) {
-        this.projectCoordinator = projectCoordinator;
-    }
-
-    public String getCoordinatorContact() {
-        return coordinatorContact;
-    }
-
-    public void setCoordinatorContact(String coordinatorContact) {
-        this.coordinatorContact = coordinatorContact;
     }
 
     public boolean isProjectStatus() {
@@ -172,8 +151,6 @@ public class ProjectDetails {
                 ", projectGuide='" + projectGuide + '\'' +
                 ", guideContact='" + guideContact + '\'' +
                 ", guideEmail='" + guideEmail + '\'' +
-                ", projectCoordinator='" + projectCoordinator + '\'' +
-                ", coordinatorContact='" + coordinatorContact + '\'' +
                 ", projectStatus=" + projectStatus +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +

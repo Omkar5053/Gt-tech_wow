@@ -33,4 +33,11 @@ public class ProjectDetailsController {
     {
         return projectService.getProjectDetails();
     }
+
+    @GetMapping("getProjectsByStatus")
+    public List<ProjectDto> getProjectByStatus(@RequestParam (value = "projectStatus") Integer projectStatus)
+    {
+        return projectService.getProjectStatus(projectStatus);
+    }
+
 }
