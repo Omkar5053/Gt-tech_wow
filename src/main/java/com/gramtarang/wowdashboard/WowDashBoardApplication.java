@@ -9,5 +9,4 @@ public class WowDashBoardApplication {
     public static void main(String[] args) {
         SpringApplication.run(WowDashBoardApplication.class, args);
     }
-
 }
