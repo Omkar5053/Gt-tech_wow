@@ -4,9 +4,10 @@ import com.gramtarang.wowdashboard.entity.ProjectDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface ProjectDetailsRepository extends JpaRepository<ProjectDetails, String> {
 
     @Query(value = "SELECT * FROM project_details pd WHERE pd.project_status =:project_status",nativeQuery = true)

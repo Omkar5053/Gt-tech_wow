@@ -1,8 +1,6 @@
 package com.gramtarang.wowdashboard.service;
 
-import com.gramtarang.wowdashboard.entity.StudentDetails;
-import com.gramtarang.wowdashboard.entity.User;
-import com.gramtarang.wowdashboard.entity.ResponseDto;
+import com.gramtarang.wowdashboard.entity.*;
 import com.gramtarang.wowdashboard.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,35 +13,42 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
-
     BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    public UserDto checkLogin(String userName, String password) {
 
-    public ResponseDto checkLogin(String userName, String password) {
-
-        ResponseDto responseDto = new ResponseDto();
+        UserDto userDto = new UserDto();
+        UserInfo userInfo = new UserInfo();
         User user = userRepository.getUserByUserName(userName);
         String encodedPassword = user.getPassword();
         if (!passwordEncoder.matches(password, encodedPassword)) {
-            responseDto.setStatus("Failed to Login");
-            return responseDto;
+            userDto.setApiStatus("Failed");
+            return userDto;
         }
-        responseDto.setUserName(userName);
-        if (user.getRole() != 0)
-            responseDto.setRole("Student");
+        userDto.setUserName(userName);
+        userDto.setRole(user.getRole().toString());
+        userDto.setApiStatus("SUCCESS");
+        if(user.isStatus())
+            userDto.setUserStatus("ACTIVE");
         else
-            responseDto.setRole("Admin");
-        responseDto.setStatus("Success");
-        return responseDto;
+            userDto.setUserStatus("INACTIVE");
+        userInfo.setName(user.getFullName());
+        userInfo.setDept(user.getBranch());
+        userInfo.setProject(user.getProjectDetails().getProjectName());
+        userInfo.setCampus(user.getCampus());
+        userDto.setUserInfo(userInfo);
+        return userDto;
     }
 
     public User addUser(User user) {
 
         user.setCreatedDate(new Date());
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
         return userRepository.save(user);
     }
 
@@ -56,7 +61,6 @@ public class UserService {
         studentDetails.setBranch(user.get().getBranch());
         studentDetails.setCampus(user.get().getCampus());
         studentDetails.setFullName(user.get().getFullName());
-        studentDetails.setSchool(user.get().getSchool());
         studentDetails.setProjectDetails(user.get().getProjectDetails());
         studentDetails.setRegNo(user.get().getUserName());
         return studentDetails;

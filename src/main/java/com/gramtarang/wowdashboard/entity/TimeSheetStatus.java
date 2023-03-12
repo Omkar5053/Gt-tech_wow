@@ -1,14 +1,12 @@
 package com.gramtarang.wowdashboard.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-public enum ROLES {
-    STUDENT(0),
-    GUIDE(1),
-    ADMIN(2);
+public enum TimeSheetStatus {
+    SUBMITTED(0),
+    APPROVED(1),
+    REJECTED(2);
 
     private int id;
-    ROLES(int id) {
+    TimeSheetStatus(int id) {
         this.id = id;
     }
 

@@ -2,7 +2,7 @@ package com.gramtarang.wowdashboard.controller;
 
 import com.gramtarang.wowdashboard.entity.StudentDetails;
 import com.gramtarang.wowdashboard.entity.User;
-import com.gramtarang.wowdashboard.entity.ResponseDto;
+import com.gramtarang.wowdashboard.entity.UserDto;
 import com.gramtarang.wowdashboard.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +17,8 @@ public class UserController {
     }
 
     @PostMapping("login")
-    public ResponseDto login(@RequestParam(value = "userName") String userName,
-                             @RequestParam(value = "password") String password)
+    public UserDto login(@RequestParam(value = "userName") String userName,
+                         @RequestParam(value = "password") String password)
     {
         return userService.checkLogin(userName, password);
     }

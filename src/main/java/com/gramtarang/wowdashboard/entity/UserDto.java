@@ -7,13 +7,12 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 @Data
-public class UserInfo {
-    private String name;
-    private String dept;
-    private String project;
-    private String campus;
-    private String username;
-
+@ToString
+public class UserDto {
+    private String userName;
+    private String role;
+    private String userStatus;
+    private String apiStatus;
+    private UserInfo userInfo;
 }
