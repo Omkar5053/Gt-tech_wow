@@ -4,6 +4,7 @@ import com.gramtarang.wowdashboard.entity.StudentDetails;
 import com.gramtarang.wowdashboard.entity.User;
 import com.gramtarang.wowdashboard.entity.UserDto;
 import com.gramtarang.wowdashboard.service.UserService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -33,7 +33,6 @@ public class User {
     private boolean status;
     private String emailId;
     private String mobile;
-    @JsonIgnore
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy hh:mm:ss")
     private Date createdDate;
     @ManyToOne
@@ -42,7 +41,7 @@ public class User {
     private ProjectDetails projectDetails;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    @JsonManagedReference
+//    @JsonManagedReference
     private List<TimeSheet> timeSheets;
 
 }

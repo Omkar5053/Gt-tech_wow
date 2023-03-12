@@ -3,6 +3,7 @@ package com.gramtarang.wowdashboard.controller;
 import com.gramtarang.wowdashboard.entity.TimeSheet;
 import com.gramtarang.wowdashboard.entity.TimeSheetStatus;
 import com.gramtarang.wowdashboard.service.TimeSheetService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class TimeSheetController {
         return timeSheetService.getallTimeSheets();
     }
 
-    @PostMapping("add")
+    @PostMapping(value = "add",consumes = MediaType.APPLICATION_JSON_VALUE)
     public String addTimeSheet(@RequestBody TimeSheet timeSheet)
     {
         return timeSheetService.add(timeSheet);
