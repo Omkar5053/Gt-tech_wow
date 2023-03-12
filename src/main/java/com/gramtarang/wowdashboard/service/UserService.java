@@ -5,6 +5,7 @@ import com.gramtarang.wowdashboard.repository.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -72,4 +73,33 @@ public class UserService {
         return users.size();
     }
 
+    public List<StudentDetails> getStudentDetails(String projectId) {
+        List<User> users = userRepository.getUsersByProjectId(projectId);
+        List<StudentDetails> studentDetails = new ArrayList<>();
+        for(User user : users)
+        {
+            studentDetails.add(convertToStudentDetail(user));
+        }
+      return studentDetails;
+    }
+
+    private StudentDetails convertToStudentDetail(User user) {
+        StudentDetails studentDetails = new StudentDetails();
+        studentDetails.setBranch(user.getBranch());
+        studentDetails.setCampus(user.getCampus());
+        studentDetails.setFullName(user.getFullName());
+        studentDetails.setProjectDetails(user.getProjectDetails());
+        studentDetails.setRegNo(user.getUserName());
+        return studentDetails;
+    }
+
+    public List<StudentDetails> getall() {
+        List<StudentDetails> studentDetails = new ArrayList<>();
+        List<User> users = userRepository.findAll();
+        for(User user : users)
+        {
+            studentDetails.add(convertToStudentDetail(user));
+        }
+        return studentDetails;
+    }
 }

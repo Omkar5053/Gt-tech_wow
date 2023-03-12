@@ -7,6 +7,7 @@ import com.gramtarang.wowdashboard.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class SprintDetailsService {
@@ -20,7 +21,7 @@ public class SprintDetailsService {
     }
 
 
-    public SprintDetails projectDetails(String projectId) {
+    public List<SprintDetails> projectDetails(String projectId) {
         return sprintDetailsRepository.getSprintDetails(projectId);
     }
 

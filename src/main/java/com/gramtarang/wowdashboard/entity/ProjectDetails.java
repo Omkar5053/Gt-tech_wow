@@ -30,15 +30,10 @@ public class ProjectDetails {
     private Date endDate;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "projectDetails")
-//    @JsonManagedReference
+    @JsonManagedReference
     private List<User> users;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "projectDetails")
-//    @JsonManagedReference
+    @JsonManagedReference
     private List<SprintDetails> sprintDetails;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "projectDetails")
-//    @JsonManagedReference
-    private List<TimeSheet> timeSheets;
-
 
 }

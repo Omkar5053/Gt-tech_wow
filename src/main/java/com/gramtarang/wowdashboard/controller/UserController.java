@@ -7,6 +7,8 @@ import com.gramtarang.wowdashboard.service.UserService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user/")
 public class UserController {
@@ -35,4 +37,15 @@ public class UserController {
         return userService.getDetails(userId);
     }
 
+    @GetMapping("studentDetails")
+    public List<StudentDetails> getStudentDetailByProject(@RequestParam(value = "projectId") String projectId)
+    {
+        return userService.getStudentDetails(projectId);
+    }
+
+    @GetMapping("getStudentDetails")
+    public List<StudentDetails> getStudents()
+    {
+        return userService.getall();
+    }
 }

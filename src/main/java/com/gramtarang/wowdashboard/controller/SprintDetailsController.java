@@ -5,6 +5,8 @@ import com.gramtarang.wowdashboard.service.SprintDetailsService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/sprint/")
 public class SprintDetailsController {
@@ -15,7 +17,7 @@ public class SprintDetailsController {
         this.sprintDetailsService = sprintDetailsService;
     }
     @GetMapping("SprintByProjectId")
-    public SprintDetails getSprintDetailsByProjectId(@RequestParam(value = "projectId") String projectId)
+    public List<SprintDetails> getSprintDetailsByProjectId(@RequestParam(value = "projectId") String projectId)
     {
         return sprintDetailsService.projectDetails(projectId);
     }

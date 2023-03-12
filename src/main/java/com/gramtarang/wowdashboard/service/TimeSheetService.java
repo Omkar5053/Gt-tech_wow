@@ -39,6 +39,7 @@ public class TimeSheetService {
         if(user.getRole().toString() == "ADMIN" || user.getRole().toString() == "GUIDE")
         {
             timeSheet.setTimeSheetStatus(timeSheetStatus);
+            timeSheetRepository.save(timeSheet);
             return timeSheetStatus.toString();
         }
         return "UNAUTHORIZED USER";

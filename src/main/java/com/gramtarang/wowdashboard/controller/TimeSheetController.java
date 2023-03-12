@@ -32,7 +32,7 @@ public class TimeSheetController {
         return timeSheetService.add(timeSheet);
     }
 
-    @PostMapping
+    @PostMapping("checkTimeSheet")
     public String checkTimeSheet(@RequestParam(value = "userId") Integer userId,
                                  @RequestParam(value = "timeSheetId") Integer timeSheetId,
                                  @RequestParam(value = "timeSheetStatus") TimeSheetStatus timeSheetStatus)

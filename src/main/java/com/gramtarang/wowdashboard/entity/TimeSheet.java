@@ -25,11 +25,12 @@ public class TimeSheet {
     private Date endTime;
     @Enumerated(EnumType.ORDINAL)
     private TimeSheetStatus timeSheetStatus;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-    @ManyToOne
-    @JsonBackReference
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private ProjectDetails projectDetails;
 }

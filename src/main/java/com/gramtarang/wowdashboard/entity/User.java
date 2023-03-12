@@ -1,9 +1,6 @@
 package com.gramtarang.wowdashboard.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -35,13 +32,10 @@ public class User {
     private String mobile;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy hh:mm:ss")
     private Date createdDate;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "project_id")
     @JsonBackReference
     private ProjectDetails projectDetails;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-//    @JsonManagedReference
-    private List<TimeSheet> timeSheets;
 
 }
